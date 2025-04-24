@@ -1,7 +1,21 @@
+let theShader;
+
+function preload() {
+    theShader = loadShader('shaders/shader.vert', 'shaders/shader.frag');
+}
+
 function setup() {
-  createCanvas(400, 400);
+    pixelDensity(1);
+    createCanvas(windowWidth, windowHeight, WEBGL);
+    noStroke();
 }
 
 function draw() {
-  background(220);
+    theShader.setUniform('u_resolution', [width, windowHeight]);
+    shader(theShader);
+    rect(0,0,windowWidth, height);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }
