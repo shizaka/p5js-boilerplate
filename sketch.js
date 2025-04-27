@@ -11,7 +11,8 @@ function setup() {
 }
 
 function draw() {
-    theShader.setUniform('u_resolution', [width, windowHeight]);
+    theShader.setUniform('iResolution', [width, windowHeight]);
+    theShader.setUniform('iTime', millis()/1000);
     shader(theShader);
     rect(0,0,windowWidth, height);
 }
